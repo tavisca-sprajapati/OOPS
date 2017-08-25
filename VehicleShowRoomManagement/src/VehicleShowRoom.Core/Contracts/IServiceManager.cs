@@ -2,9 +2,7 @@
 
 namespace VehicleShowRoom.Core.Contracts
 {
-    public interface IServiceManager
+    public interface IServiceManager : IOrderManager, IInvoiceManager 
     {
-        OrderResponse DoService(OrderRequest vehicle);
-        Invoice GenerateInvoice(OrderResponse orderResponse, OrderRequest orderRequest);
     }
 }

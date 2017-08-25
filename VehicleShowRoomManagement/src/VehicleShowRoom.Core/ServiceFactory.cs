@@ -25,7 +25,7 @@ namespace VehicleShowRoom.Core
                     provider = new MaintainanceServiceProvider(vehicleRepository);
                     break;
                 default:
-                    throw new InValidOrderException(Constants.ErrorMessage.InvalidOrder) ;
+                    throw new InvalidOrderException(Constants.ErrorMessage.InvalidOrder) ;
             }
             return provider;
         }

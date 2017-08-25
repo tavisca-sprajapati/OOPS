@@ -45,7 +45,7 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="ErrorInformation.cs" />
-    <Compile Include="Exceptions\InValidOrderException.cs" />
+    <Compile Include="Exceptions\InvalidOrderException.cs" />
     <Compile Include="Invoice.cs" />
     <Compile Include="InvoiceStatus.cs" />
     <Compile Include="OrderRequest.cs" />

@@ -1,5 +1,6 @@
 ﻿using VehicleShowRoom.Entities;
 using VehicleShowRoom.Core.Contracts;
+using System;
 
 namespace VehicleShowRoom.Core.Implementations
 {
@@ -18,7 +19,7 @@ namespace VehicleShowRoom.Core.Implementations
             return _invoiceGenerator.CreateInvoice(orderResponse.Product, orderRequest.Customer);
         }
         
-        public OrderResponse DoService(OrderRequest orderRequest)
+        public OrderResponse Order(OrderRequest orderRequest)
         {
             return _serviceProvider.DoService(orderRequest);
         }

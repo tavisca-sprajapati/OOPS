@@ -42,8 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IInvoiceGenerator.cs" />
+    <Compile Include="Contracts\IInvoiceManager.cs" />
     <Compile Include="Contracts\IInvoiceRepository.cs" />
     <Compile Include="Contracts\IInvoiceReportService.cs" />
+    <Compile Include="Contracts\IOrderManager.cs" />
     <Compile Include="Implementations\InvoiceRepository.cs" />
     <Compile Include="Contracts\IOrderService.cs" />
     <Compile Include="Contracts\IReportService.cs" />
