@@ -26,14 +26,14 @@ namespace VehicleShowRoom.Core.Implementations
             OrderResponse orderResponse = null;
             try
             {
-                orderResponse = _serviceManager.DoService(orderRequest);
+                orderResponse = _serviceManager.Order(orderRequest);
                 if (IsOrderConfirmed(orderResponse))
                 {
                     invoice = _serviceManager.GenerateInvoice(orderResponse, orderRequest);
                 }
 
             }
-            catch (InValidOrderException exception)
+            catch (InvalidOrderException exception)
             {
                 status = GetOrderStatus(exception, Constants.ErrorCode.InvalidOrder);
                 orderResponse = new OrderResponse { Status = status };

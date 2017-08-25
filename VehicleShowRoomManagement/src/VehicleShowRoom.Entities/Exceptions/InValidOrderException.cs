@@ -2,9 +2,9 @@
 
 namespace VehicleShowRoom.Entities
 {
-    public class InValidOrderException : Exception
+    public class InvalidOrderException : Exception
     {
-        public InValidOrderException(string message) : base(message)
+        public InvalidOrderException(string message) : base(message)
         {
         }
     }
