@@ -7,20 +7,14 @@ namespace VehicleShowRoom.Core.Implementations
 {
     public class OrderService : IOrderService
     {
-        IVehicleServiceProvider _serviceProvider;
         IServiceManager _serviceManager;
-        IInvoiceGenerator _invoiceGenerator;
         public OrderService()
         {
-            _invoiceGenerator = new InvoiceFactory().GetInvoiceGenerator();
         }
         public OrderResponse Order(OrderRequest orderRequest)
         {
-
-            _serviceProvider = new ServiceFactory().GetServiceProvider(orderRequest.OrderType);
-
-            _serviceManager = new ServiceManager(_invoiceGenerator, _serviceProvider);
-
+            _serviceManager = GetServiceManager(orderRequest);
+            
             Invoice invoice = null;
             OrderStatus status = null;
             OrderResponse orderResponse = null;
@@ -56,8 +50,13 @@ namespace VehicleShowRoom.Core.Implementations
 
         private OrderStatus GetOrderStatus(Exception exception, string errorCode)
         {
-             var errors = new List<ErrorInformation> { new ErrorInformation { ErrorCode = errorCode, ErrorMessage = exception.ToString() } };
+            var errors = new List<ErrorInformation> { new ErrorInformation { ErrorCode = errorCode, ErrorMessage = exception.ToString() } };
             return new OrderStatus { Status = StatusOptions.Failure, errors = errors };
+        }
+        private IServiceManager GetServiceManager(OrderRequest orderRequest)
+        {
+            IInvoiceGenerator invoiceGenerator = new InvoiceFactory().GetInvoiceGenerator();
+            return new ServiceManager(invoiceGenerator);
         }
     }
 }

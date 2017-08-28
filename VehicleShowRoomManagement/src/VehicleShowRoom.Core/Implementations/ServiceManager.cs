@@ -8,10 +8,9 @@ namespace VehicleShowRoom.Core.Implementations
     {
         IInvoiceGenerator _invoiceGenerator;
         IVehicleServiceProvider _serviceProvider;
-        public ServiceManager(IInvoiceGenerator invoiceGenerator, IVehicleServiceProvider serviceProvider)
+        public ServiceManager(IInvoiceGenerator invoiceGenerator)
         {
             _invoiceGenerator = invoiceGenerator;
-            _serviceProvider = serviceProvider;
         }
 
         public Invoice GenerateInvoice(OrderResponse orderResponse, OrderRequest orderRequest)
@@ -21,6 +20,7 @@ namespace VehicleShowRoom.Core.Implementations
         
         public OrderResponse Order(OrderRequest orderRequest)
         {
+            _serviceProvider = new ServiceFactory().GetServiceProvider(orderRequest.OrderType);
             return _serviceProvider.DoService(orderRequest);
         }
     }
